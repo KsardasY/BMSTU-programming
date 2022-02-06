@@ -47,7 +47,7 @@ void csort(char *src, char *dest) {
     for (int i = 0; i < k; i++) {
         d = 0;
         for (int v = 0; v < k; v++) {
-            if (v != i && (ls[i] > ls[v] || (ls[i] == ls[v] && more(w[i], w[v])))) {
+            if (v != i && (ls[i] > ls[v] || (ls[i] == ls[v] && i > v))) {
                 d += 1 + ls[v];
             }
         }
