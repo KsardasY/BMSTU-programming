@@ -37,6 +37,7 @@ int main() {
     distributionsort(s, sd, keys, 26, n, b);
     sd[n] = '\0';
     free(s);
+    free(keys);
     printf("%s", sd);
     free(sd);
     return 0;
