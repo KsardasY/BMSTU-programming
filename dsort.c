@@ -23,22 +23,19 @@ void distributionsort(const char *s, char *sd, const int *keys, int m, int n, ch
 
 
 int main() {
-    int m = (int) pow(10, 6), *keys = malloc(sizeof(int) * 26), n = 0;
-    char* s = malloc(m), b = 'a';
+    int m = (int) pow(10, 6) + 1, keys[26], n = 0;
+    char s[m], b = 'a';
     fgets(s, m, stdin);
-    while (s[n] != '\0' && s[n] != '\n' && s[n] != '\t' && s[n] != ' ') {
+    while (s[n] != '\0' && s[n] != '\n') {
         n++;
     }
     for (char i = 0; i < 26; i++) {
         keys[i] = 0;
     }
     key(s, keys, n, b);
-    char* sd = malloc(n + 1);
-    distributionsort(s, sd, keys, 26, n, b);
+    char sd[n + 1];
     sd[n] = '\0';
-    free(s);
-    free(keys);
+    distributionsort(s, sd, keys, 26, n, b);
     printf("%s", sd);
-    free(sd);
     return 0;
 }
