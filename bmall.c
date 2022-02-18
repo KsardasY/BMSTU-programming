@@ -18,6 +18,8 @@ void suffix(const char *s, int *q, int m) {
         q[i] = t;
     }
 }
+
+
 int max(int a, int b) {
     if (a > b) return a;
     return b;
