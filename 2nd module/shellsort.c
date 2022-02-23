@@ -15,7 +15,7 @@ unsigned long fib(unsigned long n) {
 
 
 void shellsort(unsigned long nel, int (*compare)(unsigned long i, unsigned long j), void (*swap)(unsigned long i, unsigned long j)) {
-  long long d = 1, i, l;
+  long long d = fib(nel), i, l;
   char f = 1;
   while (d > 0) {
     i = 1;
