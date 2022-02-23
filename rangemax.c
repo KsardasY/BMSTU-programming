@@ -64,14 +64,14 @@ int main(int argc, char** argv) {
     scanf("%d", &n);
     int a[n];
     for (int i = 0; i < n; i++) scanf("%d", &a[i]);
-    int *t = (int*)malloc(sizeof(int) * n);
+    int *t = (int*)malloc(sizeof(int) * 4 * n);
     segmenttree_build(a, n, &t);
     scanf("%d", &m);
-    char s[5];
+    char s[4];
     for (int j = 0; j < m; j++) {
-        scanf("%s%d%d", &s, &l, &r);
+        scanf("%s %d %d", &s, &l, &r);
         if (!(strcmp(s, "UPD"))) segmenttree_update(t, l, r, n);
-        else printf("%d", segmenttree_query(t, n, l, r));
+        else printf("%d\n", segmenttree_query(t, n, l, r));
     }
     free(t);
     return 0;
