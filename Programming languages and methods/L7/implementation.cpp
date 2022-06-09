@@ -21,7 +21,7 @@ int RangeList::len() const {
     return this->n;
 }
 
-bool RangeList::presense(int x) const {
+bool RangeList::presense(double x) const {
     int i = 0;
     while (i < this->n && !this->arr[i].between(x)) { i++; }
     if (i == this->n) return false;
