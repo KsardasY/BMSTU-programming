@@ -25,7 +25,7 @@ int main() {
     RangeList rangelist2;
     rangelist2.add(Range(3.5, 4));
     rangelist2.add(Range(1.0111, 5));
-    rangelist2.add(Range(-4, 8));
+    rangelist2.add(Range(5, 8));
     for (int i = 0; i < m; i++) {
         cout << rangelist2[i] << endl;
     }
@@ -34,5 +34,8 @@ int main() {
     for (int i = 0; i < rangelist1.len(); i++) {
         cout << rangelist1[i] << endl;
     }
+    cout << endl;
+    cout << rangelist1.presense(5) << endl;
+    cout << rangelist1.presense(5.000001) << endl;
     return 0;
 }
