@@ -13,7 +13,7 @@ public:
     Range operator[](int i) const;
     void add(Range r);
     int len() const;
-    bool presense(int x) const;
+    bool presense(double x) const;
     void extend(const RangeList& rl);
 };
 
