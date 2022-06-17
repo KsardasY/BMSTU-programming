@@ -14,15 +14,15 @@ int main() {
     b.add(-2);
     Seq<int> c = b - a, d = a + b, e = a * b;
     for (int i = 0; i < c.size(); i++) {
-        cout << c[i] << endl;
+        cout << c[i] << " ";
     }
     cout << endl;
     for (int i = 0; i < d.size(); i++) {
-        cout << d[i] << endl;
+        cout << d[i] << " ";
     }
     cout << endl;
     for (int i = 0; i < e.size(); i++) {
-        cout << e[i] << endl;
+        cout << e[i] << " ";
     }
     return 0;
 }
