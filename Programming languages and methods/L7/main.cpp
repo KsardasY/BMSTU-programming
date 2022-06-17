@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
-#include "range.h"
-#include "declaration.h"
+#include "Range.h"
+#include "RangeList.h"
 using namespace std;
 
 
