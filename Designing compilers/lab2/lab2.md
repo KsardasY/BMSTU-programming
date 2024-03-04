@@ -54,7 +54,8 @@ func insert(file *ast.File) {
 				for j := 0; j < len(globalList.(*ast.CaseClause).List); j++ {
 					switchStmt.Body.List[i].(*ast.CaseClause).List[j] = &ast.BasicLit{
 						Kind:  token.STRING,
-						Value: name + "==" + switchStmt.Body.List[i].(*ast.CaseClause).List[j].(*ast.BasicLit).Value,
+						Value: name + "==" + switchStmt.Body.List[i].
+							(*ast.CaseClause).List[j].(*ast.BasicLit).Value,
 					}
 				}
 			}
