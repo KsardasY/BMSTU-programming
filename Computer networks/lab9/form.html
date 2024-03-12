@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<body style="background-color: #ededed;">
+<div style="background-color: mediumslateblue; height: 100px;"></div>
+<div class="container-fluid" style="text-align: center;">
+
+    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+        <form  method="post"  class="form-signin"  id="input" role="form">
+            <h3 class="form-signin-heading" style="text-align: center; font-weight: 400; font-size: 40px;">ARGUMENTS</h3>
+            <div class="form-group">
+                <input type="text"  placeholder="arg1" class="form-control" name="arg1"/>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="arg2" class="form-control" name="arg2" />
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="arg3" class="form-control" name = "arg3"/>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <button type="submit" id="send" class="btn btn-primary btn-block">Send</button>
+                </div>
+            </div>
+        </form>
+        <div id = "output">
+            <h3>Response</h3>
+            <div>{{.}}</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

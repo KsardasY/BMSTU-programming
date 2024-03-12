@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<script>
+  window.addEventListener("load", function(evt) {
+    var output = document.getElementById("output");
+    var input = document.getElementById("input");
+    var ws;
+    ws = new WebSocket("ws://localhost:8080/echo");
+    var print = function(message) {
+      var d = document.createElement("div");
+      d.textContent = message;
+      output.appendChild(d);
+      output.scroll(0, output.scrollHeight);
+    };
+    document.getElementById("send").onclick = function(evt) {
+      ws.onopen = function(evt) {
+        print("OPEN");
+      }
+      ws.onclose = function(evt) {
+        print("CLOSE");
+        ws = null;
+      }
+      ws.onmessage = function(evt) {
+        print("RESPONSE: " + evt.data);
+      }
+      ws.onerror = function(evt) {
+        print("ERROR: " + evt.data);
+      }
+      let formElement = document.getElementById('form');
+
+      ws.send(input.value);
+      print(input.value)
+      return false;
+    };
+  });
+</script>
+<body style="background-color: #afafaf;">
+<div style="background-color: #1ef3; height: 50px;"></div>
+<div class="container-fluid" style="text-align: center;">
+
+  <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+    <form id="form">
+      <h3 class="form-signin-heading" style="text-align: center; font-weight: 400; font-size: 40px;">ARGUMENTS</h3>
+      <input type="text"  placeholder="arg1" class="form-control" id="input" name="arg1"/>
+      <button  id="send">Send</button>
+    </form>
+    <div >
+      <h3>Response</h3>
+      <div id="output" style="max-height: 70vh;overflow-y: scroll;"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
