@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+<style type="text/css">
+    *{
+        font-size: 20px;
+        color: sienna;
+        word-wrap: break-word;
+    }
+    .page-wrapper {
+        display: flex;
+        justify-content: space-between;
+        background: #cbc0f3;
+    }
+    .left-panel-wrapper {
+        width: 400px;
+        border: 1px solid greenyellow;
+    }
+    .right-panel-wrapper {
+        width: 400px;
+        border: 1px solid greenyellow;
+    }
+    .content-wrapper {
+        width: calc(100% - 800px);
+        padding: 0 30px;
+        border: 1px solid greenyellow;
+    }
+</style>
+<script>
+    window.addEventListener("load", function(evt) {
+        var output1 = document.getElementById("task1");
+        var ws1;
+        ws1 = new WebSocket("ws://localhost:8011/task1");
+        var print1 = function(message) {
+            output1.innerHTML = message
+        };
+
+        ws1.onclose = function(evt) {
+            print1("CLOSE");
+            ws1 = null;
+        }
+        ws1.onmessage = function(evt) {
+            print1( evt.data);
+        }
+        ws1.onerror = function(evt) {
+            print1("ERROR: " + evt.data);
+        }
+        var output2 = document.getElementById("task2");
+        var ws2;
+        ws2 = new WebSocket("ws://localhost:8012/task2");
+        var print2 = function(message) {
+            output2.innerHTML = message
+        };
+
+        ws2.onclose = function(evt) {
+            print2("CLOSE");
+            ws2 = null;
+        }
+        ws2.onmessage = function(evt) {
+            print2( evt.data);
+        }
+        ws2.onerror = function(evt) {
+            print2("ERROR: " + evt.data);
+        }
+        var output3 = document.getElementById("task3");
+        var ws3;
+        ws3 = new WebSocket("ws://localhost:8013/task3");
+        var print3 = function(message) {
+            output3.innerHTML = message
+        };
+
+        ws3.onclose = function(evt) {
+            print3("CLOSE");
+            ws3 = null;
+        }
+        ws3.onmessage = function(evt) {
+            print3( evt.data);
+        }
+        ws3.onerror = function(evt) {
+            print3("ERROR: " + evt.data);
+        }
+        return false;
+    });
+
+    function syntaxHighlight(json) {
+        if (typeof json != 'string') {
+            json = JSON.stringify(json, undefined, 2);
+        }
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    };
+</script>
+<div class="page-wrapper">
+    <div class="left-panel-wrapper">
+        <div class="left-panel">
+            <div style="text-align: center; font-weight: bold; font-size: medium">Get last block</div>
+            <div id="task1">no data yet</div>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="content">
+            <div style="text-align: center; font-weight: bold; font-size: medium">Get data from block</div>
+            <div id="task2"></div>
+        </div>
+    </div>
+
+    <div class="right-panel-wrapper">
+        <div class="right-panel">
+            <div style="text-align: center; font-weight: bold; font-size: medium">Get transactions</div>
+            <div id="task3"></div>
+        </div>
+    </div>
+</div>
