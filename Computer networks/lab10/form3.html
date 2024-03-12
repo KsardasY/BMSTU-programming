@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+<style type="text/css">
+  .page-wrapper {
+    display: flex;
+    justify-content: space-between;
+    background: #cbc0f3;
+  }
+  .left-panel-wrapper {
+    width: 400px;
+    border: 1px solid greenyellow;
+  }
+  .right-panel-wrapper {
+    width: 400px;
+    border: 1px solid greenyellow;
+  }
+  .content-wrapper {
+    /*width: 250px;*/
+    width: calc(100% - 800px);
+    padding: 0 30px;
+    border: 1px solid greenyellow;
+  }
+</style>
+<script>
+  window.addEventListener("load", function(evt) {
+    var output1 = document.getElementById("ftp");
+    var ws1;
+    ws1 = new WebSocket("ws://localhost:8010/task1"); //151.248.113.144:8010
+    var print1 = function(message) {
+      output1.innerHTML = message
+    };
+
+    ws1.onclose = function(evt) {
+      print1("CLOSE");
+      ws1 = null;
+    }
+    ws1.onmessage = function(evt) {
+      print1( evt.data);
+    }
+    ws1.onerror = function(evt) {
+      print1("ERROR: " + evt.data);
+    }
+    var output2 = document.getElementById("task3");
+    var ws2;
+    ws2 = new WebSocket("ws://localhost:8030/task3"); //151.248.113.144:8030
+    var print2 = function(message) {
+      output2.innerHTML = message
+    };
+
+    ws2.onclose = function(evt) {
+      print2("CLOSE");
+      ws2 = null;
+    }
+    ws2.onmessage = function(evt) {
+      print2( evt.data);
+    }
+    ws2.onerror = function(evt) {
+      print2("ERROR: " + evt.data);
+    }
+    var output3 = document.getElementById("task5");
+    var ws3;
+    ws3 = new WebSocket("ws://localhost:8050/task5"); //151.248.113.144:8050
+    var print3 = function(message) {
+      output3.innerHTML = message
+    };
+
+    ws3.onclose = function(evt) {
+      print3("CLOSE");
+      ws3 = null;
+    }
+    ws3.onmessage = function(evt) {
+      print3( evt.data);
+    }
+    ws3.onerror = function(evt) {
+      print3("ERROR: " + evt.data);
+    }
+    return false;
+  });
+</script>
+<div class="page-wrapper">
+  <div class="left-panel-wrapper">
+    <div class="left-panel">
+      <div id="ftp">norm</div>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="content">
+      <div id="task2"></div>
+    </div>
+  </div>
+
+  <div class="right-panel-wrapper">
+    <div class="right-panel">
+      <div id="task3"></div>
+    </div>
+  </div>
+</div>
