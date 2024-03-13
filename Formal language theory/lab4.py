@@ -353,4 +353,5 @@ def main() -> None:
     print(word_in_grammar(grammar_path, word_path))
 
 
-main()
+if __name__ == "__main__":
+    main()
