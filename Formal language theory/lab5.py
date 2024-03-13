@@ -419,4 +419,5 @@ def main() -> None:
         print(tree)
 
 
-main()
+if __name__ == "__main__":
+    main()
