@@ -39,7 +39,7 @@ def tokenize(filename: str) -> List:
 
 
 def main() -> NoReturn:
-    filename = input("Введите название файла: ")
+    filename = "test1_2.txt"
     tokens = tokenize(filename)
     for t, p, l, val in tokens:
         print(f"{t} ({p},{l}): {val}")
