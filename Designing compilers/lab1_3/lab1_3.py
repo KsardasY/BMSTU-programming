@@ -238,7 +238,7 @@ def main() -> NoReturn:
     scanner = compilier.get_scanner(filename)
     scanner.tokenize()
     for token in scanner.get_comments():
-        print(str(token))
+        print(token)
 
 
 if __name__ == "__main__":
