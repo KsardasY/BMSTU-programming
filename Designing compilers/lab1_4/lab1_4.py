@@ -25,20 +25,16 @@ class DFA:
         value = list()
         start = copy(position)
         end = copy(position)
-        # print(self.current_state, position, position.get_symbol())
         while not position.is_end_of_file() and self.exist_transition(position):
             value.append(position.get_symbol())
             if self.current_state in self.final_states:
                 self.last_final_state = self.current_state
             self.current_state = self.transitions[(self.current_state, position.get_symbol())]
             end = copy(position)
-            # print(position)
             position.next()
         if self.current_state in self.final_states:
-            # print("f", position)
             return Token(self.final_states[self.current_state], start, end, "".join(value))
         position.next()
-        # print("l", position)
         return Token("ERROR", end, end)
 
 
@@ -91,7 +87,6 @@ class Scanner:
         return self.comments
 
     def get_next_token(self) -> Token:
-        # print(1)
         while not self.cur.is_end_of_file() and self.cur.is_white_space():
             self.cur.next()
         token = self.dfa.parse(self.cur)
@@ -162,7 +157,7 @@ def main() -> NoReturn:
     scanner = compilier.get_scanner(filename, dfa)
     scanner.tokenize()
     for token in scanner.get_comments():
-        print(str(token))
+        print(token)
 
 
 if __name__ == "__main__":
