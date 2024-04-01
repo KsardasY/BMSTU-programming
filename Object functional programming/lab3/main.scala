@@ -56,11 +56,8 @@ object main {
             res = res && (this.variable_values(equation._1.toString) == equation._2.asInstanceOf[T])
           }
         } else if (equation._2.isInstanceOf[String] && this.variable_values.contains(equation._2.toString)) {
-          // println(2, this.variable_values(equation._2.toString), equation._1, this.variable_values(equation._2.toString) == equation._1)
-          // println(this.variable_values)
           res = res && (this.variable_values(equation._2.toString) == equation._1)
         } else if (!equation._1.isInstanceOf[String] && !equation._2.isInstanceOf[String]) {
-          // println(3, equation._1.isInstanceOf[T])
           res = res && (equation._1.asInstanceOf[T] == equation._2.asInstanceOf[T])
         }
       }
