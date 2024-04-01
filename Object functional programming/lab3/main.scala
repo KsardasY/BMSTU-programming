@@ -49,20 +49,31 @@ object main {
       for (equation <- this.equations) {
         if (equation._1.isInstanceOf[String] && this.variable_values.contains(equation._1.toString)) {
           if (equation._2.isInstanceOf[String]) {
+            println(0)
             res = res && (this.variable_values(equation._1.toString) == this.variable_values(equation._2.toString))
           } else {
+            println(1)
             res = res && (this.variable_values(equation._1.toString) == equation._2.asInstanceOf[T])
           }
         } else if (equation._2.isInstanceOf[String] && this.variable_values.contains(equation._2.toString)) {
+          // println(2, this.variable_values(equation._2.toString), equation._1, this.variable_values(equation._2.toString) == equation._1)
+          // println(this.variable_values)
           res = res && (this.variable_values(equation._2.toString) == equation._1)
+        } else if (!equation._1.isInstanceOf[String] && !equation._2.isInstanceOf[String]) {
+          // println(3, equation._1.isInstanceOf[T])
+          res = res && (equation._1.asInstanceOf[T] == equation._2.asInstanceOf[T])
         }
       }
       res
     }
 
-    def get_value(variable: String): Option[T] = {
-      if (this.variable_values.contains(variable)) {
-        Option(this.variable_values(variable))
+    def get_value(variable: String)(implicit num : Numeric[T]): Option[T] = {
+      if (this.solve_exists()) {
+        if (this.variable_values.contains(variable)) {
+          Option(this.variable_values(variable))
+        } else {
+          Option(1.asInstanceOf[T])
+        }
       } else {
         None
       }
@@ -85,5 +96,16 @@ object main {
     }
     println("Значение переменной d: " + system.get_value("d").toString)
     println("Значение переменной h: " + system.get_value("h").toString)
+
+    val system2 = new EquationSystem[Int]()
+
+    system2.add_equation(11, "x")
+    system2.add_equation("y", "z")
+    if (system2.solve_exists()) {
+      println("Система имеет решение")
+    } else {
+      println("Система не имеет решения")
+    }
+    println(system2.get_value("y"))
   }
 }
