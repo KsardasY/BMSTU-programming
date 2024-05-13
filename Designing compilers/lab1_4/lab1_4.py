@@ -140,8 +140,8 @@ def create_dfa() -> DFA:
     transitions[(0, "`")] = 1
     for i in range(65535):
         c = chr(i)
-        if c != '`':
-            transitions[(1, "`")] = 1
+        if c != "`":
+            transitions[(1, c)] = 1
     for c in letters | numbers:
         transitions[(9, c)] = 4
     transitions[(1, "`")] = 2
