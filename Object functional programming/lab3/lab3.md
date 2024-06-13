@@ -68,7 +68,8 @@ object main {
         if (equation._1.isInstanceOf[String] && this.variable_values.contains(equation._1.toString)) {
           if (equation._2.isInstanceOf[String]) {
             println(0)
-            res = res && (this.variable_values(equation._1.toString) == this.variable_values(equation._2.toString))
+            res = res && (this.variable_values(equation._1.toString) == this.variable_values(
+equation._2.toString))
           } else {
             println(1)
             res = res && (this.variable_values(equation._1.toString) == equation._2.asInstanceOf[T])
