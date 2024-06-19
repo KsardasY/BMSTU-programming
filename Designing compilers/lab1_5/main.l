@@ -210,9 +210,6 @@ int main(){
             print_frag(&coords);
             printf(":\n%ld\n", value.number);
         }
-        // else if (tag == TAG_COMMENT) {
-            // add_comment(&comment_table, &coords);
-        // }
         else if (tag == TAG_KEYWORD) {
             printf("%s ",tag_names[tag]);
             print_frag(&coords);
