@@ -16,7 +16,6 @@ def tokenize(filename: str) -> List:
     tokens_join = "|".join(f"(?P<{x[0]}>{x[1]})" for x in rules)
     pos = 1
     line = 1
-    ex_token_type = "NEWLINE"
     for m in re.finditer(tokens_join, text):
         l, r = m.span()
         token_type = m.lastgroup
