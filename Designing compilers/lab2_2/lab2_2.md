@@ -1,8 +1,27 @@
-Program -> ((Struct|Union|Enum)";")*
+Program -> Program SUE
 
-Struct -> "struct"Body
+Program -> e
 
-Body -> (Ident IdentList)|(Ident?("{"((Struct|Union|Enum|Declaration)";")*"}"IdentList?)?)
+SUE -> Struct ";"
+
+SUE -> Union ";"
+
+SUE -> Enum ";"
+
+Struct -> "struct" Body
+
+Body -> Ident IdentList
+
+Body -> Ident
+
+Body -> Ident "{" ((Struct|Union|Enum|Declaration)";")* "}" IdentList
+
+Body -> Ident "{" ((Struct|Union|Enum|Declaration)";")* "}"
+
+Body -> e
+
+DeclarationList -> DeclarationList 
+
 
 Ident -> [a-zA-Z][a-zA-Z0-9]\*
 
